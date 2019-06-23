@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  python:
+    build: ./python
+    user: dev
+    volumes:
+      - ${WORKSPACE_PATH}:/code
+
+  # apps
+  simplemooc:
+    build: ./python
+    user: dev
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ${WORKSPACE_PATH}/simplemooc:/code
+    ports:
+      - "8000:8000"
+
+  twitter-flask:
+    build: ./python
+    user: dev
+    command: python /code/app.py
+    volumes:
+      - ${WORKSPACE_PATH}/twitter-flask:/code
+    ports:
+      - "5000:5000"
