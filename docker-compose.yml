@@ -21,7 +21,7 @@ services:
   twitter-flask:
     build: ./python
     user: dev
-    command: python /code/app.py
+    command: python /code/run.py
     volumes:
       - ${WORKSPACE_PATH}/twitter-flask:/code
     ports:
