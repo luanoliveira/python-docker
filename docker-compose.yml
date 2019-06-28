@@ -8,6 +8,17 @@ services:
     volumes:
       - ${WORKSPACE_PATH}:/code
 
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ${WORKSPACE_PATH}/.data/mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
   # apps
   simplemooc:
     build: ./python
