@@ -19,6 +19,13 @@ services:
     ports:
       - "3306:3306"
 
+  node:
+    image: node:8.16.0-jessie
+    working_dir: /code
+    user: node
+    volumes:
+      - ${WORKSPACE_PATH}:/code
+
   # apps
   simplemooc:
     build: ./python
@@ -37,3 +44,4 @@ services:
       - ${WORKSPACE_PATH}/twitter-flask:/code
     ports:
       - "5000:5000"
+    
